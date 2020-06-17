@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
+import { DataHandler } from "./datahandler.js";
 
 function Container() {
   const [items, setItems] = useState(null);
@@ -8,30 +9,35 @@ function Container() {
   if (items === null) {
     DataHandler(setItems);
   }
-
-  return <div>Stuff goes here</div>;
+  return (
+    <div>
+      <GetUserNamesFromJobs items={items}></GetUserNamesFromJobs>
+      <DisplayWorker items={items}></DisplayWorker>
+    </div>
+  );
 }
 
-function DataHandler(setItems) {
-  let data = require("./sampledata.json");
-  let jobdata = [];
-
-  for (let i = 0; i < data.jobs.length; i++) {
-    let username = data.jobs[i].user;
-    let startdate = data.jobs[i].startdate;
-    let startmonth = data.jobs[i].startmonth;
-    let startyear = data.jobs[i].startyear;
-    let enddate = data.jobs[i].enddate;
-    let endmonth = data.jobs[i].endmonth;
-    let endyear = data.jobs[i].endyear;
-
-    let startdato = new Date(startyear, startmonth, startdate);
-    let slutdato = new Date(endyear, endmonth, enddate);
-
-    let job = { username: username, start: startdato, end: slutdato };
-    jobdata.push(job);
+function DisplayWorker({ items }) {
+  // Loop over the object and extract values from it
+  for (let [key, value] of Object.entries(items[0])) {
+    console.log(`${key}: ${value}`);
   }
-  setItems(jobdata);
+  return <p>Display Worker</p>;
+}
+
+function GetUserNamesFromJobs({ items }) {
+  let usernames = [];
+  console.log(items[0]);
+  for (let i = 0; i < items.length; i++) {
+    let temp = items[i].username;
+    usernames.push(temp);
+  }
+
+  if (items === null) {
+    return <p>"Data has not loaded yet"</p>;
+  } else {
+    return <p>{usernames}</p>;
+  }
 }
 
 ReactDOM.render(
