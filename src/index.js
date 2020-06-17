@@ -12,14 +12,14 @@ function Container() {
   return (
     <div>
       <GetUserNamesFromJobs items={items}></GetUserNamesFromJobs>
-      <DisplayWorker items={items}></DisplayWorker>
+      <DisplayWorker items={items} workerId={0}></DisplayWorker>
     </div>
   );
 }
 
-function DisplayWorker({ items }) {
+function DisplayWorker({ items, workerId }) {
   // Loop over the object and extract values from it
-  for (let [key, value] of Object.entries(items[0])) {
+  for (let [key, value] of Object.entries(items[workerId])) {
     console.log(`${key}: ${value}`);
   }
   return <p>Display Worker</p>;
