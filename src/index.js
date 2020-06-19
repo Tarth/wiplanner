@@ -12,46 +12,41 @@ function Container() {
   return (
     <div>
       {/*Comments looks like this in JSX*/}
-      {/*<GetUserNamesFromJobs items={items}></GetUserNamesFromJobs>*/}
       <DisplayAllWorkers items={items}></DisplayAllWorkers>
     </div>
   );
 }
 
 function DisplayAllWorkers({ items }) {
-  console.log(items.length);
-  for (let i = 0; i < items.length; i++) {
-    return (
-      <div>
-        <DisplayWorker items={items} workerId={i}></DisplayWorker>
-      </div>
-    );
-  }
+  return (
+    <div>
+      {items.map(x => (
+        <DisplayWorker item={x} key={x.id}/>
+      ))}
+    </div>
+  );
 }
 
-function DisplayWorker({ items, workerId }) {
+function DisplayWorker({ item }) {
   return (
     <div>
       <table>
         <tbody>
           <tr>
-            <td>{items[workerId].username}</td>
+            <td>{item.username}</td>
             <td>
-              {items[workerId].start.getDate()}/
-              {items[workerId].start.getMonth()}/
-              {items[workerId].start.getFullYear()}
+              {item.start.getDate()}/{item.start.getMonth()}/
+              {item.start.getFullYear()}
             </td>
             <td>
-              {items[workerId].start.getHours()}:
-              {items[workerId].start.getMinutes()}
+              {item.start.getHours()}:{item.start.getMinutes()}
             </td>
             <td>
-              {items[workerId].end.getDate()}/{items[workerId].end.getMonth()}/
-              {items[workerId].end.getFullYear()}
+              {item.end.getDate()}/{item.end.getMonth()}/
+              {item.end.getFullYear()}
             </td>
             <td>
-              {items[workerId].end.getHours()}:
-              {items[workerId].end.getMinutes()}
+              {item.end.getHours()}:{item.end.getMinutes()}
             </td>
           </tr>
         </tbody>
@@ -59,22 +54,6 @@ function DisplayWorker({ items, workerId }) {
     </div>
   );
 }
-/*
-function GetUserNamesFromJobs({ items }) {
-  let usernames = [];
-
-  for (let i = 0; i < items.length; i++) {
-    let temp = items[i].username;
-    usernames.push(temp);
-  }
-
-  if (items === null) {
-    return <p>"Data has not loaded yet"</p>;
-  } else {
-    return <p>{usernames}</p>;
-  }
-}
-*/
 
 ReactDOM.render(
   <div className="room">

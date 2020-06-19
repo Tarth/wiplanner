@@ -3,18 +3,20 @@ export function DataHandler(setItems) {
   let jobdata = [];
 
   for (let i = 0; i < data.jobs.length; i++) {
-    let username = data.jobs[i].user;
-    let startdate = data.jobs[i].startdate;
-    let startmonth = data.jobs[i].startmonth;
-    let startyear = data.jobs[i].startyear;
-    let enddate = data.jobs[i].enddate;
-    let endmonth = data.jobs[i].endmonth;
-    let endyear = data.jobs[i].endyear;
+    const username = data.jobs[i].user;
+    const startdate = data.jobs[i].startdate;
+    const startmonth = data.jobs[i].startmonth;
+    const startyear = data.jobs[i].startyear;
+    const enddate = data.jobs[i].enddate;
+    const endmonth = data.jobs[i].endmonth;
+    const endyear = data.jobs[i].endyear;
+    const id = data.jobs[i].id;
+    
 
     let startdato = new Date(startyear, startmonth, startdate);
     let slutdato = new Date(endyear, endmonth, enddate);
 
-    let job = { username: username, start: startdato, end: slutdato };
+    let job = { username: username, start: startdato, end: slutdato, id: id };
     jobdata.push(job);
   }
   setItems(jobdata);

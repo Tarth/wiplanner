@@ -1,6 +1,7 @@
 {
   "jobs": [
     {
+      "id": 1,
       "user": "Mikkel",
       "startdate": 15,
       "startmonth": 6,
@@ -10,6 +11,7 @@
       "endyear": 2020
     },
     {
+      "id": 2,
       "user": "Mikkel",
       "startdate": 16,
       "startmonth": 6,
@@ -19,6 +21,7 @@
       "endyear": 2020
     },
     {
+      "id": 3,
       "user": "Frank",
       "startdate": 17,
       "startmonth": 6,
@@ -28,6 +31,7 @@
       "endyear": 2020
     },
     {
+      "id": 4,
       "user": "Torben",
       "startdate": 15,
       "startmonth": 6,
@@ -37,6 +41,7 @@
       "endyear": 2020
     },
     {
+      "id": 5,
       "user": "Kim",
       "startdate": 15,
       "startmonth": 6,
