@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import { DataHandler } from "./datahandler.js";
+import { format, differenceInDays } from "date-fns";
 
 function Container() {
   const [items, setItems] = useState(null);
@@ -10,7 +11,7 @@ function Container() {
     DataHandler(setItems);
   }
   return (
-    <div>
+    <div className="calendar-grid">
       {/*Comments looks like this in JSX*/}
       <DisplayAllWorkers items={items}></DisplayAllWorkers>
     </div>
@@ -19,39 +20,60 @@ function Container() {
 
 function DisplayAllWorkers({ items }) {
   return (
-    <div>
-      {items.map(x => (
-        <DisplayWorker item={x} key={x.id}/>
+    <>
+      <span>Navn</span>
+      <span>Mandag</span>
+      <span>Tirsdag</span>
+      <span>Onsdag</span>
+      <span>Torsdag</span>
+      <span>Fredag</span>
+      <span>Lørdag</span>
+      <span>Søndag</span>
+      {items.map((x) => (
+        <DisplayWorker item={x} key={x.id} />
       ))}
-    </div>
+    </>
   );
 }
-
+/* 
 function DisplayWorker({ item }) {
+  console.log(differenceInDays(item.end, item.start));
+
   return (
-    <div>
-      <table>
-        <tbody>
-          <tr>
-            <td>{item.username}</td>
-            <td>
-              {item.start.getDate()}/{item.start.getMonth()}/
-              {item.start.getFullYear()}
-            </td>
-            <td>
-              {item.start.getHours()}:{item.start.getMinutes()}
-            </td>
-            <td>
-              {item.end.getDate()}/{item.end.getMonth()}/
-              {item.end.getFullYear()}
-            </td>
-            <td>
-              {item.end.getHours()}:{item.end.getMinutes()}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <>
+      <span>{item.username}</span>
+      <span>
+        {format(item.start, "dd")}/{format(item.start, "MM")}/
+        {format(item.start, "yyyy")}
+      </span>
+      <span>
+        {format(item.start, "HH")}:{format(item.start, "mm")}
+      </span>
+      <span>
+        {format(item.end, "dd")}/{format(item.end, "MM")}/
+        {format(item.end, "yyyy")}
+      </span>
+      <span>
+        {format(item.end, "HH")}:{format(item.end, "mm")}
+      </span>
+    </>
+  );
+}
+*/
+function DisplayWorker({ item }) {
+  console.log(differenceInDays(item.end, item.start));
+
+  return (
+    <>
+      <span>{item.username}</span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </>
   );
 }
 
