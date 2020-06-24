@@ -12,15 +12,16 @@ code {
     monospace;
 }
 
-.calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  border-top: 1px solid black;
-  border-right: 1px solid black;
+.workerjobs {
+  background-color: lightgray;
+  display: flex;
+  justify-content: space-between;
 }
 
-.calendar-grid > span {
-  padding: 8px 4px;
-  border-left: 1px solid black;
-  border-bottom: 1px solid black;
+.workerjob {
+  border: 1px solid black;
+  flex-grow: 1;
+  background-color: lime;
+  text-align: center;
+  margin-left: 2px;
 }
